@@ -10,6 +10,10 @@ var knex = require('knex')({
   }
 });
 
+const { Model } = require('objection')
+
+Model.knex(knex)
+
 const app = express()
 const port = 8081
 
