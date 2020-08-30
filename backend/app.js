@@ -14,7 +14,7 @@ const app = express()
 const port = 8081
 
 app.set('trust proxy', 'loopback');
-app.use('/api', require('./api').router)
+app.use('/api', require('api').router)
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
