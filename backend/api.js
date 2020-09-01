@@ -4,8 +4,8 @@ const router = express.Router()
 const Store = require('./models/Store')
 
 router.get('/test', (req, res) => {
-    Store.query().then(users => {
-        res.json(users.stocks)
+    Store.query().findById(4000).then(store => {
+        res.json(store.suburb)
     }).catch((e) => {
         res.send(e)
     })
