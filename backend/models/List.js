@@ -26,8 +26,8 @@ class List extends Model {
             relation: Model.HasManyRelation,
             modelClass: ListProduct,
             join: {
-                from: 'Lists.product_id',
-                to: 'Shopping_List_Products.product_id'
+                from: 'Lists.list_id',
+                to: 'Shopping_List_Products.list_id'
             }
         }
     }
