@@ -21,7 +21,7 @@ router.get('/customer/:id', (req, res) => {
 })
 
 /* Example of how to retrieve all of a customers lists */
-router.get('/customer/:id/lists', (req, res) => {
+router.get('/customer/:id/lists', async (req, res) => {
     const customer = await Customer.query().findById(req.params.id)
     customer.$relatedQuery('lists').then(lists => {
         res.json(lists)
