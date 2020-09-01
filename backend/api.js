@@ -5,7 +5,7 @@ const Store = require('./models/Store')
 
 router.get('/test', (req, res) => {
     Store.query().then(users => {
-        res.json(users)
+        res.json(users.products)
     }).catch((e) => {
         res.send(e)
     })
