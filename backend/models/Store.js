@@ -1,7 +1,5 @@
 const { Model } = require('objection')
 
-const Stock = require('./Stock')
-const Suburb = require('./Suburb')
 
 class Store extends Model {
 
@@ -13,23 +11,30 @@ class Store extends Model {
         return 'Stores'
     }
 
-    static relationMappings = {
-        suburb: {
-            relation: Model.BelongsToOneRelation,
-            modelClass: Suburb,
-            join: {
-                from: 'Stores.suburb_id',
-                to: 'Suburbs.suburb_id'
-            }
-        },
-        stocks: {
-            relation: Model.HasManyRelation,
-            modelClass: Stock,
-            join: {
-                from: 'Stores.store_id',
-                to: 'Stocks.store_id'
+    static get relationMappings() {
+
+        const Stock = require('./Stock')
+        const Suburb = require('./Suburb')
+
+        return {
+            suburb: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Suburb,
+                join: {
+                    from: 'Stores.suburb_id',
+                    to: 'Suburbs.suburb_id'
+                }
+            },
+            stocks: {
+                relation: Model.HasManyRelation,
+                modelClass: Stock,
+                join: {
+                    from: 'Stores.store_id',
+                    to: 'Stocks.store_id'
+                }
             }
         }
+
     }
 
 }

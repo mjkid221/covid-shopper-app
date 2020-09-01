@@ -1,6 +1,5 @@
 const { Model } = require('objection')
 
-const Store = require('./Store')
 
 class Suburb extends Model {
 
@@ -12,13 +11,18 @@ class Suburb extends Model {
         return 'Suburbs'
     }
 
-    static relationMappings = {
-        stores: {
-            relation: Model.HasManyRelation,
-            modelClass: Store,
-            join: {
-                from: 'Suburb.suburb_id',
-                to: 'Stores.suburb_id'
+    static get relationMappings() {
+
+        const Store = require('./Store')
+
+        return {
+            stores: {
+                relation: Model.HasManyRelation,
+                modelClass: Store,
+                join: {
+                    from: 'Suburb.suburb_id',
+                    to: 'Stores.suburb_id'
+                }
             }
         }
 

@@ -13,21 +13,27 @@ class List extends Model {
         return 'Lists'
     }
 
-    static relationMappings = {
-        customer: {
-            relation: Model.BelongsToOneRelation,
-            modelClass: Customer,
-            join: {
-                from: 'Lists.c_id',
-                to: 'Customers.c_id'
-            }
-        },
-        products: {
-            relation: Model.HasManyRelation,
-            modelClass: ListProduct,
-            join: {
-                from: 'Lists.list_id',
-                to: 'Shopping_List_Products.list_id'
+    static get relationMappings() {
+
+        const Customer = require('./Customer')
+        const ListProduct = require('./ListProduct')
+
+        return {
+            customer: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Customer,
+                join: {
+                    from: 'Lists.c_id',
+                    to: 'Customers.c_id'
+                }
+            },
+            products: {
+                relation: Model.HasManyRelation,
+                modelClass: ListProduct,
+                join: {
+                    from: 'Lists.list_id',
+                    to: 'Shopping_List_Products.list_id'
+                }
             }
         }
     }
