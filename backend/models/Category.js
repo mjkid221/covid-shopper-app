@@ -1,5 +1,7 @@
 const { Model } = require('objection')
 
+const Product = require('./Product')
+
 class Category extends Model {
 
     static get idColumn() {

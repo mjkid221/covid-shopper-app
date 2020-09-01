@@ -1,5 +1,7 @@
 const { Model } = require('objection')
 
+const Store = require('./Store')
+
 class Suburb extends Model {
 
     static get idColumn() {

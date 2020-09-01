@@ -1,5 +1,7 @@
 const { Model } = require('objection')
 
+const Store = require('./Product')
+
 class Brand extends Model {
 
     static get idColumn() {
