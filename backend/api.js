@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const User = require('./models/User')
+const Store = require('./models/Store')
 
 router.get('/test', (req, res) => {
-    User.query().then(users => {
+    Store.query().then(users => {
         res.json(users)
     }).catch((e) => {
         res.send(e)
