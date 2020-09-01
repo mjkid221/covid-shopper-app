@@ -2,6 +2,7 @@ const { Model } = require('objection')
 
 const Brand = require('./Brand')
 const Category = require('./Category')
+const ListProduct = require('./ListProduct')
 
 class Product extends Model {
 
@@ -28,6 +29,14 @@ class Product extends Model {
             join: {
                 from: 'Products.category_id',
                 to: 'Categories.category_id'
+            }
+        },
+        listProducts: {
+            relation: Model.HasManyRelation,
+            modelClass: ListProduct,
+            join: {
+                from: 'Products.product_id',
+                to: 'Shopping_List_Products.product_id'
             }
         }
     }
