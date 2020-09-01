@@ -13,7 +13,7 @@ class Store extends Model {
     static relationMappings = {
         suburb: {
             relation: Model.BelongsToOneRelation,
-            modelClass: Suburbs,
+            modelClass: Suburb,
             join: {
                 from: 'Stores.suburb_id',
                 to: 'Suburbs.suburb_id'
