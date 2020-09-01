@@ -11,6 +11,10 @@ router.get('/test', (req, res) => {
     })
 })
 
+router.get('/dog', (req, res) => {
+    res.json({test: 1})
+})
+
 module.exports = {
     router: router
 }

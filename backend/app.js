@@ -6,7 +6,7 @@ var knex = require('knex')({
     host : '127.0.0.1',
     user : 'root',
     password : '757583a3b3a4931b',
-    database : 'test'
+    database : 'social_distancing'
   }
 });
 
@@ -18,6 +18,7 @@ const app = express()
 const port = 8081
 
 app.set('trust proxy', 'loopback');
+
 app.use('/api', require('./api').router)
 
 app.listen(port, () => {
