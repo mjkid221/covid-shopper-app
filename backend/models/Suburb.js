@@ -10,7 +10,7 @@ class Suburb extends Model {
         return 'Suburbs'
     }
 
-    static relationMappings =
+    static relationMappings = {
         stores: {
             relation: Model.HasManyRelation,
             modelClass: Store,

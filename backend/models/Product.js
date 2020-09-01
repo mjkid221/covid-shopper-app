@@ -10,7 +10,7 @@ class Product extends Model {
         return 'Products'
     }
 
-    static relationMappings =
+    static relationMappings = {
         brand: {
             relation: Model.BelongsToOneRelation,
             modelClass: Brand,
