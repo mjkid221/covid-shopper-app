@@ -4,7 +4,7 @@ const router = express.Router()
 const Store = require('./models/Store')
 
 router.get('/test', (req, res) => {
-    Store.query().findById(4000).then(store => {
+    Store.relatedQuery('stocks').for(4000).then(store => {
         res.json(store)
     }).catch((e) => {
         res.send(e)
