@@ -1,6 +1,6 @@
 const { Model } = require('objection')
 
-const Store = require('./Product')
+const Product = require('./Product')
 
 class Brand extends Model {
 
