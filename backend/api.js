@@ -1,11 +1,11 @@
 const express = require('express')
 const router = express.Router()
 
-const Store = require('./models/Store')
+const List = require('./models/List')
 
 router.get('/test', (req, res) => {
-    Store.relatedQuery('stocks').for(4000).then(store => {
-        res.json(store)
+    List.relatedQuery('products').for(6000).then(products => {
+        res.json(products)
     }).catch((e) => {
         res.send(e)
     })
