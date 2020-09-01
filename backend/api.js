@@ -5,7 +5,7 @@ const Store = require('./models/Store')
 
 router.get('/test', (req, res) => {
     Store.query().findById(4000).then(store => {
-        res.json(store.suburb)
+        res.json(store)
     }).catch((e) => {
         res.send(e)
     })
