@@ -44,6 +44,10 @@ router.get('/customer/:id/lists', (req, res) => {
 
 */
 
+router.post('/list', (req, res) => {
+    List.query().insert(req.body)
+})
+
 module.exports = {
     router: router
 }
