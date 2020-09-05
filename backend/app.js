@@ -17,7 +17,7 @@ Model.knex(knex)
 
 const app = express()
 
-app.use(bodyParser)
+app.use(bodyParser.json())
 app.set('trust proxy', 'loopback')
 app.use('/api', require('./api').router)
 
