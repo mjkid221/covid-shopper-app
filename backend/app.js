@@ -1,4 +1,5 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 
 var knex = require('knex')({
   client: 'mysql',
@@ -8,19 +9,19 @@ var knex = require('knex')({
     password : '757583a3b3a4931b',
     database : 'social_distancing'
   }
-});
+})
 
 const { Model } = require('objection')
 
 Model.knex(knex)
 
 const app = express()
-const port = 8081
 
-app.set('trust proxy', 'loopback');
-
+app.use(bodyParser)
+app.set('trust proxy', 'loopback')
 app.use('/api', require('./api').router)
 
+const port = 8081
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
 })
