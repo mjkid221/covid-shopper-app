@@ -45,11 +45,14 @@ router.get('/customer/:id/lists', (req, res) => {
 */
 
 router.post('/list', (req, res) => {
+    res.json(req.body)
+    /*
     List.query().insertAndFetch(req.body).then(list => {
         res.json(list)
     }).catch(e => {
         res.send(e)
     })
+    */
 })
 
 module.exports = {
