@@ -35,10 +35,11 @@ router.put('/:id/product', (req, res) => {
 })
 
 // Update quantity of item in list
-router.put('/:id/product', (req, res) => {
+router.patch('/:id/product/:pid', (req, res) => {
     List.relatedQuery('products')
         .for(req.params.id)
         .patch(req.body)
+        .where('Products.product_id', req.params.pid)
         .then(list => res.json(list))
         .catch(e => res.send(e))
 })
