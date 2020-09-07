@@ -26,7 +26,7 @@ router.patch('/:id', (req, res) => {
 })
 
 // Add item to list
-router.put('/:id/product', (req, res) => {
+router.post('/:id/product', (req, res) => {
     List.relatedQuery('products')
         .for(req.params.id)
         .relate(req.body)
@@ -60,8 +60,6 @@ router.delete('/:id', (req, res) => {
                 .then(() => res.status(204).end())
                 .catch(e => res.send(e))
 })
-
-
 
 
 module.exports = router
