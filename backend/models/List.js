@@ -34,7 +34,7 @@ class List extends Model {
                 }
             },
             products2: {
-                relation: Model.ManyToManyRelation,
+                relation: Model.HasManyRelation,
                 modelClass: Product,
                 join: {
                     from: 'Lists.list_id',
