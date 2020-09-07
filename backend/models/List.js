@@ -35,12 +35,14 @@ class List extends Model {
             },
             products2: {
                 relation: Model.ManyToManyRelation,
-                from: 'Lists.list_id',
-                through: {
-                    from: 'Shopping_List_Products.list_id',
-                    to: 'Shopping_List_Products.product_id'
-                },
-                to: 'Products.product_id'
+                join: {
+                    from: 'Lists.list_id',
+                    through: {
+                        from: 'Shopping_List_Products.list_id',
+                        to: 'Shopping_List_Products.product_id'
+                    },
+                    to: 'Products.product_id'
+                }
             }
         }
     }
