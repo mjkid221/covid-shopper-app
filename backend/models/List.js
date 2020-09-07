@@ -39,7 +39,7 @@ class List extends Model {
     }
 
     $beforeInsert(context) {
-        this.list_date = new Date().toISOString();
+        this.list_date = new Date().toISOString().slice(0, 10);
     }
 
 }
