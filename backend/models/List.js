@@ -25,14 +25,14 @@ class List extends Model {
                     to: 'Customers.c_id'
                 }
             },
-            // products: {
-            //     relation: Model.HasManyRelation,
-            //     modelClass: ListProduct,
-            //     join: {
-            //         from: 'Lists.list_id',
-            //         to: 'Shopping_List_Products.list_id'
-            //     }
-            // },
+            items: {
+                relation: Model.HasManyRelation,
+                modelClass: ListProduct,
+                join: {
+                    from: 'Lists.list_id',
+                    to: 'Shopping_List_Products.list_id'
+                }
+            },
             products: {
                 relation: Model.ManyToManyRelation,
                 modelClass: Product,
