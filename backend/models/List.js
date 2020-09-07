@@ -1,8 +1,5 @@
 const { Model } = require('objection')
 
-const Customer = require('./Customer')
-const ListProduct = require('./ListProduct')
-
 class List extends Model {
 
     static get idColumn() {
@@ -17,6 +14,7 @@ class List extends Model {
 
         const Customer = require('./Customer')
         const ListProduct = require('./ListProduct')
+        const Product = require('./Product')
 
         return {
             customer: {
@@ -34,6 +32,14 @@ class List extends Model {
                     from: 'Lists.list_id',
                     to: 'Shopping_List_Products.list_id'
                 }
+            },
+            products2: {
+                from: 'Lists.list_id',
+                through: {
+                    from: 'Shopping_List_Products.list_id',
+                    to: 'Shopping_List_Products.product_id'
+                },
+                to: 'Products.product_id'
             }
         }
     }
