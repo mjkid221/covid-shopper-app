@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     List.query().findById(req.params.id)
-                .withGraphFetched(['products', 'items'])
+                .withGraphFetched('items.product')
                 .then(list => {
                     res.json(list)
                 }).catch(e => res.send(e))
