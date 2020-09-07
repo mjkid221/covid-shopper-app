@@ -11,7 +11,8 @@ router.delete('/:id', (req, res) => {
 
 // Search for products
 router.search('/', (req, res) => {
-    Product.query().where('product_name', 'like', req.body.regex)
+    console.log(req.body.regex)
+    Product.query().where('product_name', 'like', '%Milk%')
                    .withGraphFetched(['brand', 'category'])
                    .then(products => res.json(products))
                    .catch(e => res.send(e))
