@@ -20,7 +20,9 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.set('trust proxy', 'loopback')
+
 app.use('/api', require('./api').router)
+app.use('/api/list', require('./api/list'))
 
 const port = 8081
 app.listen(port, () => {
