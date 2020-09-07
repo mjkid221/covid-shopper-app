@@ -38,6 +38,10 @@ class List extends Model {
         }
     }
 
+    $beforeInsert(context) {
+        this.list_date = new Date().toISOString();
+    }
+
 }
 
 module.exports = List
