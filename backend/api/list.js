@@ -39,7 +39,7 @@ router.delete('/:id/product/:pid', (req, res) => {
     List.relatedQuery('products')
         .for(req.params.id)
         .unrelate()
-        .where('product_id', req.params.pid)
+        .where('Products.product_id', req.params.pid)
         .then(() => res.sendStatus(204))
         .catch(e => res.send(e))
 })
