@@ -13,10 +13,9 @@ router.get('/:id', (req, res) => {
 
 // Get all stores
 router.get('/', (req, res) => {
-    Store.query().findById(req.params.id)
-                .withGraphFetched('[suburb, stocks.product]')
-                .then((store) => res.json(store))
-                .catch(e => res.send(e))
+    Store.query().withGraphFetched('[suburb, stocks.product]')
+                 .then((store) => res.json(store))
+                 .catch(e => res.send(e))
 })
 
 
