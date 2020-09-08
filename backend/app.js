@@ -24,6 +24,7 @@ app.set('trust proxy', 'loopback')
 app.use('/api', require('./api').router)
 app.use('/api/list', require('./api/list'))
 app.use('/api/product', require('./api/product'))
+app.use('/api/store', require('./api/store'))
 
 const port = 8081
 app.listen(port, () => {

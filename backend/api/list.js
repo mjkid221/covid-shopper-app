@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
                 .catch(e => res.send(e))
 })
 
-// Retrieve full graph for list
+// Retrieve list
 router.get('/:id', (req, res) => {
     List.query().findById(req.params.id)
                 .withGraphFetched('products.[brand, category]')
@@ -18,7 +18,9 @@ router.get('/:id', (req, res) => {
                 .catch(e => res.send(e))
 })
 
-// Update name of list
+// Update following fields of a list:
+// list_name
+// list_date
 router.patch('/:id', (req, res) => {
     List.query().patchAndFetchById(req.params.id, req.body)
                 .then(list => res.json(list))
