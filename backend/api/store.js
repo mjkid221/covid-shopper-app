@@ -31,7 +31,7 @@ router.get('/can-supply-list/:id', async (req, res) => {
                  .where('product_quantity', '<=', 'purchase_limit')
                  .where('list_id', req.params.id)
                  .groupBy('store_id')
-                 .having('count', '=', list_product_count)
+                 .having('count(*)', '=', list_product_count)
                  .then(store_ids => res.json(store_ids))
                  .catch(e => res.send(e))
 
