@@ -38,7 +38,7 @@ router.get('/can-supply-list/:id', async (req, res) => {
 })
 
 
-'''
+/*
 SELECT store_id FROM
 (
 SELECT a.product_id, a.quantity, a.purchase_limit, b.product_quantity, a.store_id FROM Stocks a
@@ -49,7 +49,7 @@ AND b.product_quantity <= a.purchase_limit
 ) c
 GROUP BY store_id
 HAVING COUNT(*) = (SELECT COUNT(*) FROM Shopping_List_Products where list_id = 6000)
-'''
+*/
 
 
 module.exports = router
