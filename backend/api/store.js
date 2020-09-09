@@ -39,6 +39,7 @@ router.get('/can-supply-list/:id', async (req, res) => {
     Stock.query().select('Stocks.store_id')
                  .join('Shopping_List_Products as s', 's.product_id', 'Stocks.product_id')
                  .where('s.list_id', req.params.id)
+                 .where('s.product_quantity', '<=', 'Stocks.quantity')
                  .then(stores => res.json(stores))
                  .catch(e => res.send(e))
 
