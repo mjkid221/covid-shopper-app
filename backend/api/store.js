@@ -22,6 +22,7 @@ router.get('/', (req, res) => {
 
 // Find Store who can supply all items in list
 router.get('/can-supply-list/:id', async (req, res) => {
+    /*
     Stock.query().select('Stocks.store_id')
                  .join('Shopping_List_Products', 'Shopping_List_Products.product_id', 'Stocks.product_id')
                  .where('product_quantity', '<=', 'quantity')
@@ -29,6 +30,14 @@ router.get('/can-supply-list/:id', async (req, res) => {
                  .where('list_id', req.params.id)
                  .groupBy('store_id')
                  .havingRaw('count(*) > 0')//, ListProduct.query().count().where('list_id', req.params.id))
+                 .then(store_ids => res.json(store_ids))
+                 .catch(e => res.send(e))
+    */
+    Stock.query().select('Stocks.store_id')
+                 .join('Shopping_List_Products', 'Shopping_List_Products.product_id', 'Stocks.product_id')
+                 .where('product_quantity', '<=', 'quantity')
+                 .where('product_quantity', '<=', 'purchase_limit')
+                 .where('list_id', req.params.id)
                  .then(store_ids => res.json(store_ids))
                  .catch(e => res.send(e))
 
