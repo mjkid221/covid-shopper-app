@@ -21,17 +21,14 @@ router.get('/', (req, res) => {
 })
 
 // Find Store who can supply all items in list
-router.get('/can-supply-list/:id', async (req, res) => {
-    let list_product_count = await ListProduct.query()
-                                              .count()
-                                              .where('list_id', req.params.id)
-    Stock.query().join('Shopping_List_Products')
+router.get('/can-supply-list/:id', async (req, res) => { 
+    Stock.query().join('Shopping_List_Products', 'Shopping_List_Products.product_id', 'Stocks.product_id')
                  .select('store_id')
                  .where('product_quantity', '<=', 'quantity')
                  .where('product_quantity', '<=', 'purchase_limit')
                  .where('list_id', req.params.id)
                  .groupBy('store_id')
-                 .having('count(*)', '=', list_product_count)
+                 .having('count', '=', ListProduct.query().count().where('list_id', req.params.id))
                  .then(store_ids => res.json(store_ids))
                  .catch(e => res.send(e))
 
