@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 })
 
 // Find Store who can supply all items in list
-router.get('/can-supply-list/:id', (req, res) => {
+router.get('/can-supply-list/:id', async (req, res) => {
     let list_product_count = await ListProduct.query()
                                               .count()
                                               .where('list_id', req.params.id)
