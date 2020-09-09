@@ -36,7 +36,7 @@ router.get('/can-supply-list/:id', async (req, res) => {
                  .where('s.product_quantity', '<=', 'Stocks.quantity')
                  .where('s.product_quantity', '<=', 'Stocks.purchase_limit')
     */
-    let count = await ListProduct.query().count().where('list_id', req.params.id)
+    let count = await ListProduct.query().where('list_id', req.params.id).count()
     console.log(count)
     Stock.query().alias('t').select('t.store_id')
                  .join('Shopping_List_Products as s', 's.product_id', 't.product_id')
