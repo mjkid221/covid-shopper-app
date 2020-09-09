@@ -58,7 +58,6 @@ router.get('/can-supply-list/:id', async (req, res) => {
 
 // Find Store who can supply all items in list
 router.get('/could-supply-list/:id', async (req, res) => {
-
     Stock.query().alias('t')
          .select('t.store_id')
          .count()
@@ -67,14 +66,8 @@ router.get('/could-supply-list/:id', async (req, res) => {
          .whereRaw('s.product_quantity <= t.quantity')
          .whereRaw('s.product_quantity <= t.purchase_limit')
          .groupBy('t.store_id')
-         .havingRaw(
-             'count(*) = ?',
-             ListProduct.query().where('list_id', req.params.id).count()
-         )
          .then(stores => res.json(stores))
          .catch(e => res.send(e))
-
-
 })
 
 
