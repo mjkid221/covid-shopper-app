@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 })
 
 // Find Store who can supply all items in list
-router.get('/can-supply-list/:id', async (req, res) => {
+router.get('/can-supply/list/:id', async (req, res) => {
     /*
     Stock.query().select('Stocks.store_id')
                  .join('Shopping_List_Products', 'Shopping_List_Products.product_id', 'Stocks.product_id')
@@ -57,7 +57,7 @@ router.get('/can-supply-list/:id', async (req, res) => {
 })
 
 // Find Store who can supply all items in list
-router.get('/could-supply-list/:id', async (req, res) => {
+router.get('/how-many-can-supply/list/:id', async (req, res) => {
     Stock.query().alias('t')
          .select('t.store_id')
          .count()
