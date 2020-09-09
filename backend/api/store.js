@@ -32,11 +32,12 @@ router.get('/can-supply-list/:id', async (req, res) => {
                  .havingRaw('count(*) > 0')//, ListProduct.query().count().where('list_id', req.params.id))
                  .then(store_ids => res.json(store_ids))
                  .catch(e => res.send(e))
+
+                 .where('s.product_quantity', '<=', 'Stocks.quantity')
+                 .where('s.product_quantity', '<=', 'Stocks.purchase_limit')
     */
     Stock.query().select('Stocks.store_id')
                  .join('Shopping_List_Products as s', 's.product_id', 'Stocks.product_id')
-                 .where('s.product_quantity', '<=', 'Stocks.quantity')
-                 .where('s.product_quantity', '<=', 'Stocks.purchase_limit')
                  .where('s.list_id', req.params.id)
                  .then(stores => res.json(stores))
                  .catch(e => res.send(e))
