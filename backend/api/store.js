@@ -60,7 +60,7 @@ router.get('/can-supply-list/:id', async (req, res) => {
 router.get('/could-supply-list/:id', async (req, res) => {
 
     Stock.query().alias('t')
-         .select('[t.store_id, count(*)]')
+         .select('t.store_id', 'count(*)')
          .join('Shopping_List_Products as s', 's.product_id', 't.product_id')
          .where('s.list_id', req.params.id)
          .whereRaw('s.product_quantity <= t.quantity')
