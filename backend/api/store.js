@@ -28,7 +28,7 @@ router.get('/can-supply-list/:id', async (req, res) => {
                  .where('product_quantity', '<=', 'purchase_limit')
                  .where('list_id', req.params.id)
                  .groupBy('store_id')
-                 .havingRaw('count(*) = ?', ListProduct.query().count().where('list_id', req.params.id))
+                 .havingRaw('count(*) > 0')//, ListProduct.query().count().where('list_id', req.params.id))
                  .then(store_ids => res.json(store_ids))
                  .catch(e => res.send(e))
 
