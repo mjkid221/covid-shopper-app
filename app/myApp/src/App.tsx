@@ -13,7 +13,8 @@ import { IonReactRouter } from '@ionic/react-router';
 import { ellipse, square, triangle } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
+import ViewShoppingList from './pages/ViewShoppingList'
+import MyShoppingLists from './pages/MyShoppingLists'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -41,7 +42,8 @@ const App: React.FC = () => (
         <IonRouterOutlet>
           <Route path="/tab1" component={Tab1} exact={true} />
           <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/tab3" component={Tab3} />
+          <Route path="/lists" component={MyShoppingLists} />
+          <Route path="/shopping-list/:id" component={ViewShoppingList} />
           <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
@@ -53,9 +55,9 @@ const App: React.FC = () => (
             <IonIcon icon={ellipse} />
             <IonLabel>List</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="lists" href="/lists">
             <IonIcon icon={square} />
-            <IonLabel>Stores</IonLabel>
+            <IonLabel>My Lists</IonLabel>
           </IonTabButton>
         </IonTabBar>
       </IonTabs>

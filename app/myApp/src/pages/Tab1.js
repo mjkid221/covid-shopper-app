@@ -33,7 +33,7 @@ const Tab1 = () => {
             console.log(e)
             setName("Unable to retrieve store namess")
         })
-  })
+  }, [])
 
   return (
     <IonPage>
