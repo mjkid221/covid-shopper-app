@@ -1,3 +1,4 @@
+/*
 const express = require('express')
 const router = express.Router()
 
@@ -12,7 +13,7 @@ router.get('/test', (req, res) => {
     })
 })
 
-/* Example of how to retreive customer with a given id */
+// Example of how to retreive customer with a given id
 router.get('/customer/:id', (req, res) => {
     Customer.query().findById(req.params.id).then(customer => {
         res.json(customer)
@@ -21,7 +22,7 @@ router.get('/customer/:id', (req, res) => {
     })
 })
 
-/* Example of how to retrieve all of a customers lists */
+// Example of how to retrieve all of a customers lists
 router.get('/customer/:id/lists', async (req, res) => {
     const customer = await Customer.query().findById(req.params.id)
     customer.$relatedQuery('lists').then(lists => {
@@ -31,7 +32,7 @@ router.get('/customer/:id/lists', async (req, res) => {
     })
 })
 
-/*
+
 Alteratively (for the above endpoint) you could do:
 
 router.get('/customer/:id/lists', (req, res) => {
@@ -42,8 +43,8 @@ router.get('/customer/:id/lists', (req, res) => {
     })
 })
 
-*/
 
 module.exports = {
     router: router
 }
+*/
