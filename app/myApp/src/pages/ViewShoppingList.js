@@ -23,7 +23,7 @@ const ViewShoppingList = ({match}) => {
     const [list, setList] = useState({products: [], list_name: ""})
 
     useEffect(() => {
-        fetch('https://dreamteam.uqcloud.net/api/list/' + match.param.id, {
+        fetch('https://dreamteam.uqcloud.net/api/list/' + match.params.id, {
             headers: {
                 'Access-Control-Allow-Origin': '*'
             }
@@ -33,24 +33,24 @@ const ViewShoppingList = ({match}) => {
               console.log(e)
               setName("Unable to retrieve store namess")
           })
-    })
+    }, [])
 
     return (
         <IonPage>
             <IonHeader>
               <IonToolbar>
                 <IonButtons slot='start'>
-                    <IonBackButton color='danger' defaultHref='/tab1'/>
+                    <IonBackButton color='success' defaultHref='/lists'/>
                 </IonButtons>
               </IonToolbar>
 
             </IonHeader>
             <IonContent fullscreen>
                 <IonList>
-                    {Object.keys(list.products).map(product => {
+                    {Object.keys(list.products).map((product, index) => {
                         let p = list.products[product]
                         return (
-                            <IonCard>
+                            <IonCard key={index}>
                                 <IonCardHeader>
                                     <IonCardTitle>{p.product_name}</IonCardTitle>
                                     <IonCardSubtitle>${p.list_price}</IonCardSubtitle>
