@@ -17,21 +17,22 @@ import {
     IonButtons,
     IonItemSliding,
     IonItemOptions,
-    IonItemOption
+    IonItemOption,
+    IonItemDivider
 } from '@ionic/react';
 
 const MyShoppingLists = () => {
 
     const [name, setName] = useState("")
-    const [customer, setCustomer] = useState({products: [], list_name: ""})
+    const [lists, setLists] = useState({products: [], list_name: ""})
 
     useEffect(() => {
-        fetch('https://dreamteam.uqcloud.net/api/list/' + match.params.id, {
+        fetch('https://dreamteam.uqcloud.net/api/customer/v2/5000', {
             headers: {
                 'Access-Control-Allow-Origin': '*'
             }
         }).then(res => res.json())
-          .then(res => setList(res))
+          .then(res => setLists(res))
           .catch((e) => {
               console.log(e)
               setName("Unable to retrieve store namess")
@@ -44,18 +45,27 @@ const MyShoppingLists = () => {
             <IonHeader>
                 <IonToolbar>
                     <IonTitle> My Shopping Lists </IonTitle>
-                    <IonButtons slot='start'>
-                        <IonBackButton color='danger' defaultHref='/tab1'/>
-                    </IonButtons>
                 </IonToolbar>
             </IonHeader>
 
             <IonContent fullscreen>
-                <IonItem detail color='success' href='/shopping-list/6000'>
-                  <IonLabel>
-                    Standard Item with Detail Arrow
-                  </IonLabel>
-                </IonItem>
+                <IonList>
+                    {Object.keys(lists).map((list, index) => {
+                        let item = lists[list]
+                        return (
+                            <IonItem
+                                key={index} 
+                                detail
+                                color='white'
+                                href={'/shopping-list/' + item.list_id}
+                            >
+                                <IonLabel>{item.list_name}</IonLabel>
+                            </IonItem>
+                        )
+                    })}
+                </IonList>
+
+
             </IonContent>
 
         </IonPage>
