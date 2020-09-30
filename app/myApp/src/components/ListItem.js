@@ -14,6 +14,7 @@ import {
     IonCardContent,
     IonCardSubtitle,
     IonBackButton,
+    IonButton,
     IonButtons,
     IonNote,
     IonItemSliding,
@@ -27,7 +28,7 @@ import {
     IonSelect,
     IonActionSheet
 } from '@ionic/react';
-import { trash } from 'ionicons/icons';
+import { trash, squareOutline, checkbox } from 'ionicons/icons';
 
 const ListItem = ({callback, index, product}) => {
     let pcount = product.product_quantity
@@ -35,16 +36,20 @@ const ListItem = ({callback, index, product}) => {
     let pid = product.product_id
 
     const [showActions, setShowActions] = useState(false)
+    const [done, setDone] = useState(false)
 
     return (
         <IonItemSliding>
-            <IonItem key={index} onHold={() => setShowActions(true)}>
-                <IonCheckbox slot='start'></IonCheckbox>
-                <IonLabel
-                    style={{textAlign: "center"}}
-                >
+            <IonItem key={index}>
+
+                <IonIcon
+                    icon={done ? checkbox : squareOutline}
+                    color='primary'
+                    onClick={() => setDone(!done)}></IonIcon>
+                <IonLabel style={{textAlign: "center"}}>
                 {pcount + " x " + pname}
                 </IonLabel>
+                <IonIcon icon={trash} onClick={() => setShowActions(true)}></IonIcon>
             </IonItem>
             <IonActionSheet
                 isOpen={showActions}
