@@ -22,9 +22,13 @@ import {
     IonCheckbox,
     IonFabButton,
     IonFab,
-    IonIcon
+    IonIcon,
+    IonInput,
+    IonButton,
+    IonModal,
+    IonSearchbar
 } from '@ionic/react';
-import { add } from 'ionicons/icons';
+import { add, create } from 'ionicons/icons';
 import {updateProductAmount} from '../api/product'
 import ListItem from '../components/ListItem'
 import { fetchList } from '../api/list'
@@ -34,6 +38,9 @@ const ViewShoppingList = ({match}) => {
     const [lid, setLid] = useState(null)
     const [name, setName] = useState("")
     const [products, setProducts] = useState([])
+
+    const [editName, setEditName] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     useEffect(() => {
         fetchList(match.params.id,(res) => {
@@ -54,7 +61,13 @@ const ViewShoppingList = ({match}) => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>{name}</IonTitle>
+                    <IonInput
+                        value={name}
+                        readOnly={editName}
+                        onClick={() => setEditName(!editName)}
+                        onIonChange={(e) => setName(e.target.value)}
+                        onIonBlur={() => console.log("blur")}
+                    ></IonInput>
                     <IonButtons slot='start'>
                         <IonBackButton color='primary' defaultHref='/lists'/>
                     </IonButtons>
@@ -62,8 +75,19 @@ const ViewShoppingList = ({match}) => {
 
             </IonHeader>
             <IonContent fullscreen>
+                <IonModal isOpen={showModal}>
+                    <IonContent>
+                        <IonSearchbar showCancelButton="always"></IonSearchbar>
+                        <IonList>
+                            <IonItem><IonLabel>TODO:</IonLabel></IonItem>
+                            <IonItem><IonLabel>Add</IonLabel></IonItem>
+                            <IonItem><IonLabel>Search</IonLabel></IonItem>
+                        </IonList>
+                    </IonContent>
+                    <IonButton onClick={() => setShowModal(false)}>Go back</IonButton>
+                </IonModal>
                 <IonFab vertical="bottom" horizontal="start" slot="fixed">
-                    <IonFabButton>
+                    <IonFabButton onClick={() => setShowModal(true)}>
                         <IonIcon icon={add} />
                     </IonFabButton>
                 </IonFab>

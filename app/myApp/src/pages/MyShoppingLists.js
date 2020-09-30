@@ -49,12 +49,12 @@ const MyShoppingLists = () => {
             </IonHeader>
 
             <IonContent fullscreen>
-                <IonList>
+                <IonList lines="inset">
                     {Object.keys(lists).map((list, index) => {
                         let item = lists[list]
                         return (
                             <IonItem
-                                key={index} 
+                                key={index}
                                 detail
                                 color='white'
                                 href={'/shopping-list/' + item.list_id}
