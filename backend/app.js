@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.set('trust proxy', 'loopback')
 
-app.use('/', require('./api').router)
+//app.use('/', require('./api').router)
 app.use('/list', require('./api/list'))
 app.use('/product', require('./api/product'))
 app.use('/store', require('./api/store'))
