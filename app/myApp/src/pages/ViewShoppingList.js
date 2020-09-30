@@ -25,34 +25,40 @@ import {
     IonIcon
 } from '@ionic/react';
 import { add } from 'ionicons/icons';
+import {updateProductAmount} from '../api/product'
+import ListItem from '../components/ListItem'
+import { fetchList } from '../api/list'
 
 const ViewShoppingList = ({match}) => {
 
+    const [lid, setLid] = useState(null)
     const [name, setName] = useState("")
-    const [list, setList] = useState({products: [], list_name: ""})
+    const [products, setProducts] = useState([])
 
     useEffect(() => {
-        fetch('https://dreamteam.uqcloud.net/api/list/' + match.params.id, {
-            headers: {
-                'Access-Control-Allow-Origin': '*'
-            }
-        }).then(res => res.json())
-          .then(res => setList(res))
-          .catch((e) => {
-              console.log(e)
-              setName("Unable to retrieve store namess")
-          })
+        fetchList(match.params.id,(res) => {
+            setProducts(res.products)
+            setName(res.list_name)
+            setLid(res.list_id)
+        })
     }, [])
+
+    const updateProduct = (pid, index, amount) => {
+        updateProductAmount(lid, pid, amount)
+        var copy = {...products}
+        copy[index].product_quantity = amount;
+        setProducts(copy)
+    }
 
     return (
         <IonPage>
             <IonHeader>
-              <IonToolbar>
-                  <IonTitle>{list.list_name}</IonTitle>
-                  <IonButtons slot='start'>
-                      <IonBackButton color='primary' defaultHref='/lists'/>
-                  </IonButtons>
-              </IonToolbar>
+                <IonToolbar>
+                    <IonTitle>{name}</IonTitle>
+                    <IonButtons slot='start'>
+                        <IonBackButton color='primary' defaultHref='/lists'/>
+                    </IonButtons>
+                </IonToolbar>
 
             </IonHeader>
             <IonContent fullscreen>
@@ -62,26 +68,9 @@ const ViewShoppingList = ({match}) => {
                     </IonFabButton>
                 </IonFab>
                 <IonList>
-                    {Object.keys(list.products).map((product, index) => {
-                        let p = list.products[product]
-                        return (
-                            <div>
-
-                                <IonItemSliding>
-                                    <IonItem key={index}>
-                                        <IonCheckbox slot='start'></IonCheckbox>
-                                        <IonLabel>{p.product_name}</IonLabel>
-                                        <IonNote slot='end'>{p.product_quantity}</IonNote>
-                                    </IonItem>
-                                    <IonItemOptions side='start'>
-                                        <IonItemOption color="primary">Increase</IonItemOption>
-                                    </IonItemOptions>
-                                    <IonItemOptions side='end'>
-                                        <IonItemOption color="danger">Delete</IonItemOption>
-                                    </IonItemOptions>
-                                </IonItemSliding>
-                            </div>
-                        )
+                    {Object.keys(products).map((product, i) => {
+                        return <ListItem key={i} callback={updateProduct}
+                            index={product} product={products[product]} />
                     })}
                 </IonList>
             </IonContent>

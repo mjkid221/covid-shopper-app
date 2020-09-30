@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import { 
-  IonContent, 
-  IonHeader, 
-  IonPage, 
-  IonTitle, 
-  IonToolbar 
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar
 } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
 import './Tab2.css';
 
 const Tab2 = () => {
@@ -23,7 +22,6 @@ const Tab2 = () => {
             <IonTitle size="large">List</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Shopping list page" />
       </IonContent>
     </IonPage>
   );

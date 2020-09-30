@@ -14,7 +14,6 @@ import {
     IonCardContent,
     IonCardSubtitle,
 } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
 import './Tab1.css';
 
 const Tab1 = () => {
@@ -48,7 +47,6 @@ const Tab1 = () => {
             <IonTitle size="large">Home</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name={store.store_name} />
         <IonList>
             {Object.keys(store.stocks).map(stock => {
                 let p = store.stocks[stock].product
