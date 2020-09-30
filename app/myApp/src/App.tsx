@@ -10,9 +10,9 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle, cart, reader } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
+import { ellipse, square, triangle, cart, reader, home, scan } from 'ionicons/icons';
+import ViewStores from './pages/ViewStores';
+import Home from './pages/Home';
 import ViewShoppingList from './pages/ViewShoppingList'
 import MyShoppingLists from './pages/MyShoppingLists'
 
@@ -40,15 +40,20 @@ const App: React.FC = () => (
     <IonReactRouter>
       <IonTabs>
         <IonRouterOutlet>
-          <Route path="/tab1" component={Tab1} exact={true} />
-          <Route path="/stores" component={Tab2} exact={true} />
+          <Route path="/scan" component={Home} exact={true} />
+          <Route path="/home" component={Home} exact={true} />
+          <Route path="/stores" component={ViewStores} exact={true} />
           <Route path="/lists" component={MyShoppingLists} />
           <Route path="/shopping-list/:id" component={ViewShoppingList} />
-          <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+          <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/tab1">
-            <IonIcon icon={triangle} />
+            <IonTabButton tab="scan" href="/scan">
+              <IonIcon icon={scan} />
+              <IonLabel>Scan</IonLabel>
+            </IonTabButton>
+          <IonTabButton tab="home" href="/home">
+            <IonIcon icon={home} />
             <IonLabel>Home</IonLabel>
           </IonTabButton>
           <IonTabButton tab="stores" href="/stores">

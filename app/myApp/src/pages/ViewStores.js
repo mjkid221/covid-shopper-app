@@ -14,9 +14,8 @@ import {
     IonCardContent,
     IonCardSubtitle,
 } from '@ionic/react';
-import './Tab1.css';
 
-const Tab1 = () => {
+const ViewStores = () => {
 
   const [name, setName] = useState("")
   const [store, setStore] = useState({store_name: "", stocks: []})
@@ -38,20 +37,20 @@ const Tab1 = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Home</IonTitle>
+          <IonTitle>Stores</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Home</IonTitle>
+            <IonTitle size="large">Stores</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonList>
-            {Object.keys(store.stocks).map(stock => {
+            {Object.keys(store.stocks).map((stock, i) => {
                 let p = store.stocks[stock].product
                 return (
-                    <IonCard>
+                    <IonCard key={i}>
                         <IonCardHeader>
                             <IonCardTitle>{p.product_name}</IonCardTitle>
                             <IonCardSubtitle>${p.list_price}</IonCardSubtitle>
@@ -70,4 +69,4 @@ const Tab1 = () => {
 
 };
 
-export default Tab1;
+export default ViewStores;
