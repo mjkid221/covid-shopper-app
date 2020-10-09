@@ -19,9 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="430f4eb8-1d40-4e8d-be6a-40d6238500a8" name="Default Changelist" comment="test flask endpoint">
-      <change beforePath="$PROJECT_DIR$/backend/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/test.py" afterDir="false" />
-    </list>
+    <list default="true" id="430f4eb8-1d40-4e8d-be6a-40d6238500a8" name="Default Changelist" comment="test flask endpoint" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,7 +42,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Horse-racing-tips/ml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Tensorflow-library" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -97,9 +95,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="test flask endpoint" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="630" y="221" width="424" height="496" key="FileChooserDialogImpl" timestamp="1598345746962">
-      <screen x="0" y="27" width="1712" height="878" />
+    <state x="471" y="162" width="378" height="359" key="FileChooserDialogImpl" timestamp="1601793700536">
+      <screen x="0" y="27" width="1280" height="635" />
     </state>
+    <state x="471" y="162" width="378" height="359" key="FileChooserDialogImpl/0.27.1280.635@0.27.1280.635" timestamp="1601793700536" />
     <state x="606" y="218" width="424" height="496" key="FileChooserDialogImpl/0.27.1648.842/1648.0.1536.864@0.27.1648.842" timestamp="1598009921298" />
     <state x="630" y="221" key="FileChooserDialogImpl/0.27.1712.878@0.27.1712.878" timestamp="1598345746962" />
     <state x="316" y="83" width="1016" height="742" key="SettingsEditor" timestamp="1598009932063">

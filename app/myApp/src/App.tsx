@@ -10,11 +10,12 @@ import {
   IonTabs
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle, cart, reader, home, scan } from 'ionicons/icons';
+import { ellipse, square, triangle, cart, reader, home, scan  } from 'ionicons/icons';
 import ViewStores from './pages/ViewStores';
 import Home from './pages/Home';
 import ViewShoppingList from './pages/ViewShoppingList'
 import MyShoppingLists from './pages/MyShoppingLists'
+import ViewStore from './pages/ViewStore'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -45,6 +46,7 @@ const App: React.FC = () => (
           <Route path="/stores" component={ViewStores} exact={true} />
           <Route path="/lists" component={MyShoppingLists} />
           <Route path="/shopping-list/:id" component={ViewShoppingList} />
+          <Route path="/store/:id" component={ViewStore} />
           <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
