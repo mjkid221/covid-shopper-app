@@ -30,4 +30,4 @@ class Crowd extends Model {
 
 }
 
-module.exports = Stock
+module.exports = Crowd
