@@ -8,7 +8,7 @@ const ListProduct = require('../models/ListProduct')
 // Get store by id
 router.get('/:id', (req, res) => {
     Store.query().findById(req.params.id)
-                .withGraphFetched('[suburb, stocks.product]')
+                .withGraphFetched('[suburb, stocks.product, crowds]')
                 .then((store) => res.json(store))
                 .catch(e => res.send(e))
 })
