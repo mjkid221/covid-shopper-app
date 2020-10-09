@@ -15,18 +15,18 @@ import {
     IonCardSubtitle,
 } from '@ionic/react';
 
-const ViewStores = () => {
+const ViewStore = ({match}) => {
 
   const [name, setName] = useState("")
-  const [stores, setStores] = useState({})
+  const [store, setStore] = useState({store_name: "", stocks: {}})
 
   useEffect(() => {
-      fetch('https://dreamteam.uqcloud.net/api/store', {
+      fetch(`https://dreamteam.uqcloud.net/api/store/${match.params.id}`, {
           headers: {
               'Access-Control-Allow-Origin': '*'
           }
       }).then(res => res.json())
-        .then(res => setStores(res))
+        .then(res => setStore(res))
         .catch((e) => {
             console.log(e)
             setName("Unable to retrieve store namess")
@@ -37,7 +37,7 @@ const ViewStores = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Stores</IonTitle>
+          <IonTitle>{store.store_name}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -47,16 +47,16 @@ const ViewStores = () => {
           </IonToolbar>
         </IonHeader>
         <IonList>
-            {Object.keys(stores).map((store, i) => {
-                let s = stores[store]
+            {Object.keys(store.stocks).map((stock, i) => {
+                let p = store.stocks[stock].product
                 return (
-                    <IonCard key={i} href={'/store/' + s.store_id}>
+                    <IonCard key={i} href='/home'>
                         <IonCardHeader>
-                            <IonCardTitle>{s.store_name}</IonCardTitle>
-                            <IonCardSubtitle>{s.description}</IonCardSubtitle>
+                            <IonCardTitle>{p.product_name}</IonCardTitle>
+                            <IonCardSubtitle>${p.list_price}</IonCardSubtitle>
                         </IonCardHeader>
                         <IonCardContent>
-                            <IonLabel>Phone No.: {s.phone}</IonLabel>
+                            <IonLabel>{p.product_size}</IonLabel>
                         </IonCardContent>
                     </IonCard>
                 )
@@ -69,4 +69,4 @@ const ViewStores = () => {
 
 };
 
-export default ViewStores;
+export default ViewStore;
