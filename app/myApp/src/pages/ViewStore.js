@@ -14,16 +14,14 @@ import {
     IonCardContent,
     IonCardSubtitle,
 } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Tab1.css';
 
-const Tab1 = () => {
+const ViewStore = ({match}) => {
 
   const [name, setName] = useState("")
-  const [store, setStore] = useState({store_name: "", stocks: []})
+  const [store, setStore] = useState({store_name: "", stocks: {}})
 
   useEffect(() => {
-      fetch('https://dreamteam.uqcloud.net/api/store/4000', {
+      fetch(`https://dreamteam.uqcloud.net/api/store/${match.params.id}`, {
           headers: {
               'Access-Control-Allow-Origin': '*'
           }
@@ -33,27 +31,26 @@ const Tab1 = () => {
             console.log(e)
             setName("Unable to retrieve store namess")
         })
-  })
+  }, [])
 
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>{store.store_name}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">A</IonTitle>
+            <IonTitle size="large">Stores</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name={store.store_name} />
         <IonList>
-            {Object.keys(store.stocks).map(stock => {
+            {Object.keys(store.stocks).map((stock, i) => {
                 let p = store.stocks[stock].product
                 return (
-                    <IonCard>
+                    <IonCard key={i} href='/home'>
                         <IonCardHeader>
                             <IonCardTitle>{p.product_name}</IonCardTitle>
                             <IonCardSubtitle>${p.list_price}</IonCardSubtitle>
@@ -72,4 +69,4 @@ const Tab1 = () => {
 
 };
 
-export default Tab1;
+export default ViewStore;

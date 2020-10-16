@@ -3,7 +3,7 @@ const { Model } = require('objection')
 class Crowd extends Model {
 
     static get idColumn() {
-        return ['store_id', 'crowd_entry_id'];
+        return 'crowd_entry_id';
     }
 
     static get tableName() {
@@ -15,12 +15,12 @@ class Crowd extends Model {
         const Store = require('./Store')
 
         return {
-            list: {
-                relation: Model.HasManyRelation,
+            store: {
+                relation: Model.BelongsToOneRelation,
                 modelClass: Store,
                 join: {
-                    from: 'Stores.store_id',
-                    to: 'Crowds.store_id'
+                    from: 'Crowds.store_id',
+                    to: 'Stores.store_id'
                 }
             }
         }

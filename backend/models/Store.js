@@ -15,6 +15,7 @@ class Store extends Model {
 
         const Stock = require('./Stock')
         const Suburb = require('./Suburb')
+        const Crowd = require('./Crowd')
 
         return {
             suburb: {
@@ -31,6 +32,14 @@ class Store extends Model {
                 join: {
                     from: 'Stores.store_id',
                     to: 'Stocks.store_id'
+                }
+            },
+            crowds: {
+                relation: Model.HasManyRelation,
+                modelClass: Crowd,
+                join: {
+                    from: 'Stores.store_id',
+                    to: 'Crowds.store_id'
                 }
             }
         }
