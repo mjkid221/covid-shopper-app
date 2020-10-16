@@ -22,13 +22,14 @@ import {
     IonCheckbox,
     IonFabButton,
     IonFab,
+    IonFabList,
     IonIcon,
     IonInput,
     IonButton,
     IonModal,
     IonSearchbar
 } from '@ionic/react';
-import { add, create } from 'ionicons/icons';
+import { add, create, barChart } from 'ionicons/icons';
 import {updateProductAmount, deleteProduct} from '../api/product'
 import ListItem from '../components/ListItem'
 import { fetchList } from '../api/list'
@@ -84,9 +85,15 @@ const ViewShoppingList = ({match}) => {
             <IonContent fullscreen>
                 <SearchModal showModal={showModal} setShowModal={setShowModal} lid={lid}/>
                 <IonFab vertical="bottom" horizontal="start" slot="fixed">
-                    <IonFabButton onClick={() => setShowModal(true)}>
-                        <IonIcon icon={add} />
-                    </IonFabButton>
+                    <IonFabButton>Options</IonFabButton>
+                    <IonFabList side="end">
+                        <IonFabButton onClick={() => setShowModal(true)}>
+                          <IonIcon icon={add} />
+                        </IonFabButton>
+                        <IonFabButton>
+                          <IonIcon icon={barChart} />
+                        </IonFabButton>
+                      </IonFabList>
                 </IonFab>
                 <IonList>
                     {Object.keys(products).map((product, i) => {
