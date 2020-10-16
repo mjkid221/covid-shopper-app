@@ -37,9 +37,11 @@ import { fetchList } from '../api/list'
 const SearchModal = ({showModal, setShowModal}) => {
 
     const [searchText, setSearchText] = useState('');
+    const [products, setProducts] = useState([])
 
     useEffect(() => {
-        console.log(getProductsLike(searchText))
+        let x = getProductsLike(searchText, setProducts)
+
     }, [searchText])
 
     return (
@@ -50,9 +52,12 @@ const SearchModal = ({showModal, setShowModal}) => {
                 >
                 </IonSearchbar>
                 <IonList>
-                    <IonItem><IonLabel>TODO:</IonLabel></IonItem>
-                    <IonItem><IonLabel>Add</IonLabel></IonItem>
-                    <IonItem><IonLabel>Search</IonLabel></IonItem>
+                    {Object.keys(products).map((product, i) => {
+                        let p = products[product]
+                        return (
+                            <IonItem key={i}>{p.product_name}</IonItem>
+                        )
+                    })}
                 </IonList>
             </IonContent>
             <IonButton onClick={() => setShowModal(false)}>Go back</IonButton>

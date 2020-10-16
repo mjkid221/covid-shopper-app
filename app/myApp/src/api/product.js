@@ -20,7 +20,7 @@ export const updateProductAmount = (lid, pid, amount) => {
 }
 
 
-export const getProductsLike = (regex) => {
+export const getProductsLike = (regex, setter) => {
     console.log(`Retrieving products like ${regex}`)
     fetch('https://dreamteam.uqcloud.net/api/product', {
         headers: {
@@ -30,12 +30,12 @@ export const getProductsLike = (regex) => {
         },
         method: 'SEARCH',
         body: JSON.stringify({
-            regex: regex
+            regex: `%${regex}%`
         })
     }).then(res => res.json())
       .then(res => {
           console.log(res)
-          return res
+          setter(res)
       })
       .catch((e) => {
           console.log(e)
