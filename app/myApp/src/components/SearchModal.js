@@ -29,17 +29,26 @@ import {
     IonSearchbar
 } from '@ionic/react';
 import { add, create } from 'ionicons/icons';
-import {updateProductAmount} from '../api/product'
+import {getProductsLike} from '../api/product'
 import ListItem from '../components/ListItem'
 import { fetchList } from '../api/list'
 
 
 const SearchModal = ({showModal, setShowModal}) => {
 
+    const [searchText, setSearchText] = useState('');
+
+    useEffect(() => {
+        console.log(getProductsLike(searchText))
+    }, [searchText])
+
     return (
         <IonModal isOpen={showModal}>
             <IonContent>
-                <IonSearchbar showCancelButton="always"></IonSearchbar>
+                <IonSearchbar
+                    value={searchText} onIonChange={e => setSearchText(e.detail.value)}
+                >
+                </IonSearchbar>
                 <IonList>
                     <IonItem><IonLabel>TODO:</IonLabel></IonItem>
                     <IonItem><IonLabel>Add</IonLabel></IonItem>
