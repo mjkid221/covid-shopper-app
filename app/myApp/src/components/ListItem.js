@@ -30,7 +30,8 @@ import {
 } from '@ionic/react';
 import { trash, squareOutline, checkbox } from 'ionicons/icons';
 
-const ListItem = ({callback, index, product}) => {
+
+const ListItem = ({callback, index, product, lid, deleteCallback}) => {
     let pcount = product.product_quantity
     let pname = product.product_name
     let pid = product.product_id
@@ -61,6 +62,7 @@ const ListItem = ({callback, index, product}) => {
                   icon: trash,
                   handler: () => {
                     console.log('Delete clicked');
+                    deleteCallback(lid, pid)
                   }
                 }]}
             >

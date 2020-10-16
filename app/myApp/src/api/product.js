@@ -65,3 +65,22 @@ export const addProduct = (lid, pid) => {
           console.log(e)
       })
 }
+
+
+export const deleteProduct = (lid, pid) => {
+    console.log(`Deleting product`)
+    fetch(`https://dreamteam.uqcloud.net/api/list/${lid}/product/${pid}`, {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            "Content-type": "application/json",
+            "accept": "application/json"
+        },
+        method: 'DELETE'
+    }).then(res => res.json())
+      .then(res => {
+          console.log(res)
+      })
+      .catch((e) => {
+          console.log(e)
+      })
+}
