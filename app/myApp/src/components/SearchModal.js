@@ -62,7 +62,7 @@ const SearchModal = ({showModal, setShowModal, lid}) => {
                     })}
                 </IonList>
             </IonContent>
-            <IonButton onClick={() => setShowModal(false)}>Go back</IonButton>
+            <IonButton onClick={() => setShowModal(false)}>Back</IonButton>
         </IonModal>
     )
 
