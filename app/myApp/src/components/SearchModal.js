@@ -29,20 +29,24 @@ import {
     IonSearchbar
 } from '@ionic/react';
 import { add, create } from 'ionicons/icons';
-import {getProductsLike} from '../api/product'
-import ListItem from '../components/ListItem'
+import {getProductsLike, addProduct} from '../api/product'
+import AddListItem from '../components/AddListItem'
 import { fetchList } from '../api/list'
 
 
-const SearchModal = ({showModal, setShowModal}) => {
+const SearchModal = ({showModal, setShowModal, lid}) => {
 
     const [searchText, setSearchText] = useState('');
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        let x = getProductsLike(searchText, setProducts)
-
+        getProductsLike(searchText, setProducts)
     }, [searchText])
+
+    const callback = (pid) => {
+        console.log(pid)
+        addProduct(lid, pid)
+    }
 
     return (
         <IonModal isOpen={showModal}>
@@ -52,11 +56,9 @@ const SearchModal = ({showModal, setShowModal}) => {
                 >
                 </IonSearchbar>
                 <IonList>
-                    {Object.keys(products).map((product, i) => {
-                        let p = products[product]
-                        return (
-                            <IonItem key={i}>{p.product_name}</IonItem>
-                        )
+                    {products !== null && Object.keys(products).map((product, i) => {
+                        return <AddListItem key={i} callback={callback}
+                            index={product} product={products[product]} />
                     })}
                 </IonList>
             </IonContent>

@@ -41,3 +41,27 @@ export const getProductsLike = (regex, setter) => {
           console.log(e)
       })
 }
+
+
+export const addProduct = (lid, pid) => {
+    console.log(`Adding product`)
+    fetch(`https://dreamteam.uqcloud.net/api/list/${lid}/product`, {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            "Content-type": "application/json",
+            "accept": "application/json"
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            list_id: lid,
+            product_id: pid,
+            product_quantity: 1
+        })
+    }).then(res => res.json())
+      .then(res => {
+          console.log(res)
+      })
+      .catch((e) => {
+          console.log(e)
+      })
+}

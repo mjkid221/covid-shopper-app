@@ -49,7 +49,7 @@ const ViewShoppingList = ({match}) => {
             setName(res.list_name)
             setLid(res.list_id)
         })
-    }, [])
+    }, [showModal])
 
     const updateProduct = (pid, index, amount) => {
         updateProductAmount(lid, pid, amount)
@@ -76,7 +76,7 @@ const ViewShoppingList = ({match}) => {
 
             </IonHeader>
             <IonContent fullscreen>
-                <SearchModal showModal={showModal} setShowModal={setShowModal}/>
+                <SearchModal showModal={showModal} setShowModal={setShowModal} lid={lid}/>
                 <IonFab vertical="bottom" horizontal="start" slot="fixed">
                     <IonFabButton onClick={() => setShowModal(true)}>
                         <IonIcon icon={add} />
@@ -87,6 +87,8 @@ const ViewShoppingList = ({match}) => {
                         return <ListItem key={i} callback={updateProduct}
                             index={product} product={products[product]} />
                     })}
+                    <div style={{height: "200px"}}>
+                    </div>
                 </IonList>
             </IonContent>
         </IonPage>
