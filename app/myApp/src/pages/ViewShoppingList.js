@@ -32,6 +32,7 @@ import { add, create } from 'ionicons/icons';
 import {updateProductAmount} from '../api/product'
 import ListItem from '../components/ListItem'
 import { fetchList } from '../api/list'
+import SearchModal from '../components/SearchModal'
 
 const ViewShoppingList = ({match}) => {
 
@@ -75,17 +76,7 @@ const ViewShoppingList = ({match}) => {
 
             </IonHeader>
             <IonContent fullscreen>
-                <IonModal isOpen={showModal}>
-                    <IonContent>
-                        <IonSearchbar showCancelButton="always"></IonSearchbar>
-                        <IonList>
-                            <IonItem><IonLabel>TODO:</IonLabel></IonItem>
-                            <IonItem><IonLabel>Add</IonLabel></IonItem>
-                            <IonItem><IonLabel>Search</IonLabel></IonItem>
-                        </IonList>
-                    </IonContent>
-                    <IonButton onClick={() => setShowModal(false)}>Go back</IonButton>
-                </IonModal>
+                <SearchModal showModal={showModal} setShowModal={setShowModal}/>
                 <IonFab vertical="bottom" horizontal="start" slot="fixed">
                     <IonFabButton onClick={() => setShowModal(true)}>
                         <IonIcon icon={add} />
