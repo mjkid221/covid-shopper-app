@@ -29,7 +29,7 @@ import {
     IonSearchbar
 } from '@ionic/react';
 import { add, create } from 'ionicons/icons';
-import {updateProductAmount} from '../api/product'
+import {updateProductAmount, deleteProduct} from '../api/product'
 import ListItem from '../components/ListItem'
 import { fetchList } from '../api/list'
 import SearchModal from '../components/SearchModal'
@@ -42,6 +42,7 @@ const ViewShoppingList = ({match}) => {
 
     const [editName, setEditName] = useState(false)
     const [showModal, setShowModal] = useState(false)
+    const [trigger, setTrigger] = useState(false)
 
     useEffect(() => {
         fetchList(match.params.id,(res) => {
@@ -49,13 +50,18 @@ const ViewShoppingList = ({match}) => {
             setName(res.list_name)
             setLid(res.list_id)
         })
-    }, [])
+    }, [showModal, trigger])
 
     const updateProduct = (pid, index, amount) => {
         updateProductAmount(lid, pid, amount)
         var copy = {...products}
         copy[index].product_quantity = amount;
         setProducts(copy)
+    }
+
+    const deleteCallback = (lid, pid) => {
+        deleteProduct(lid, pid)
+        setTrigger(!trigger)
     }
 
     return (
@@ -76,7 +82,7 @@ const ViewShoppingList = ({match}) => {
 
             </IonHeader>
             <IonContent fullscreen>
-                <SearchModal showModal={showModal} setShowModal={setShowModal}/>
+                <SearchModal showModal={showModal} setShowModal={setShowModal} lid={lid}/>
                 <IonFab vertical="bottom" horizontal="start" slot="fixed">
                     <IonFabButton onClick={() => setShowModal(true)}>
                         <IonIcon icon={add} />
@@ -85,8 +91,11 @@ const ViewShoppingList = ({match}) => {
                 <IonList>
                     {Object.keys(products).map((product, i) => {
                         return <ListItem key={i} callback={updateProduct}
-                            index={product} product={products[product]} />
+                            index={product} product={products[product]} lid={lid}
+                            deleteCallback={deleteCallback}/>
                     })}
+                    <div style={{height: "200px"}}>
+                    </div>
                 </IonList>
             </IonContent>
         </IonPage>

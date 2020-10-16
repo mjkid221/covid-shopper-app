@@ -20,7 +20,7 @@ export const updateProductAmount = (lid, pid, amount) => {
 }
 
 
-export const getProductsLike = (regex) => {
+export const getProductsLike = (regex, setter) => {
     console.log(`Retrieving products like ${regex}`)
     fetch('https://dreamteam.uqcloud.net/api/product', {
         headers: {
@@ -30,12 +30,55 @@ export const getProductsLike = (regex) => {
         },
         method: 'SEARCH',
         body: JSON.stringify({
-            regex: regex
+            regex: `%${regex}%`
         })
     }).then(res => res.json())
       .then(res => {
           console.log(res)
-          return res
+          setter(res)
+      })
+      .catch((e) => {
+          console.log(e)
+      })
+}
+
+
+export const addProduct = (lid, pid) => {
+    console.log(`Adding product`)
+    fetch(`https://dreamteam.uqcloud.net/api/list/${lid}/product`, {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            "Content-type": "application/json",
+            "accept": "application/json"
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            list_id: lid,
+            product_id: pid,
+            product_quantity: 1
+        })
+    }).then(res => res.json())
+      .then(res => {
+          console.log(res)
+      })
+      .catch((e) => {
+          console.log(e)
+      })
+}
+
+
+export const deleteProduct = (lid, pid) => {
+    console.log(`Deleting product`)
+    fetch(`https://dreamteam.uqcloud.net/api/list/${lid}/product/${pid}`, {
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            "Content-type": "application/json",
+            "accept": "application/json"
+        },
+        method: 'DELETE'
+    }).then(res => res.json())
+      .then(res => {
+          console.log(res)
       })
       .catch((e) => {
           console.log(e)
