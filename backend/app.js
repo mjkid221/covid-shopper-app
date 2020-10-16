@@ -7,8 +7,8 @@ var knex = require('knex')({
   connection: {
     host : '127.0.0.1',
     user : 'root',
-    password : '319Sehwag26',
-    database : 'corrected'
+    password : '757583a3b3a4931b',
+    database : 'social_distancing'
   }
 })
 
