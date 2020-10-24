@@ -1,6 +1,5 @@
 const { Model } = require('objection')
 
-
 class Crowd extends Model {
 
     static get idColumn() {

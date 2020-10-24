@@ -5,7 +5,8 @@ const Product = require('../models/Product')
 
 // Search for products
 router.search('/', (req, res) => {
-    Product.query().withGraphFetched('[brand, category]')
+    	console.log(req.body)
+	Product.query().withGraphFetched('[brand, category]')
                    .where('product_name', 'like', req.body.regex)
                    .then(products => res.json(products))
                    .catch(e => res.send(e))
