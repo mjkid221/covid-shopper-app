@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
+
 import {
     IonContent,
     IonHeader,
@@ -50,7 +52,7 @@ const ViewShoppingList = ({match}) => {
 
     const [showRecommend, setShowRecommend] = useState(false)
     const [recommended, setRecommended] = useState([])
-
+    const [deleted, setDeleted] = useState(false)
 
 
     useEffect(() => {
@@ -79,6 +81,10 @@ const ViewShoppingList = ({match}) => {
 
     const updateListName = () => {
         updateList(lid, name)
+    }
+
+    if (deleted) {
+        return <Redirect to="/lists" />
     }
 
     return (
@@ -134,7 +140,10 @@ const ViewShoppingList = ({match}) => {
                         <IonFabButton onClick={() => setShowRecommend(true)}>
                           <IonIcon icon={barChart} />
                         </IonFabButton>
-                        <IonFabButton onClick={() => deleteList(lid)}>
+                        <IonFabButton onClick={() => {
+                                deleteList(lid)
+                                setDeleted(true)
+                            }}>
                           <IonIcon icon={trash} />
                         </IonFabButton>
                       </IonFabList>
