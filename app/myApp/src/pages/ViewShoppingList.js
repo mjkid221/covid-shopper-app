@@ -128,7 +128,7 @@ const ViewShoppingList = ({match}) => {
                             )
                         })}
                     </IonContent>
-                    <IonButton onClick={() => setShowModal(false)}>Back</IonButton>
+                    <IonButton onClick={() => setShowRecommend(false)}>Back</IonButton>
                 </IonModal>
                 <SearchModal showModal={showModal} setShowModal={setShowModal} lid={lid}/>
                 <IonFab vertical="bottom" horizontal="start" slot="fixed">
