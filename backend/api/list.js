@@ -57,7 +57,7 @@ router.delete('/:id/product/:pid', (req, res) => {
 })
 
 // Delete list
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
 
     const list = await List.query()
                       .findById(req.params.id)
