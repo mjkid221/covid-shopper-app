@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const List = require('../models/List')
+const ListProduct = require('../models/ListProduct')
 
 // Create a new list
 router.post('/', (req, res) => {
@@ -58,14 +59,12 @@ router.delete('/:id/product/:pid', (req, res) => {
 
 // Delete list
 router.delete('/:id', async (req, res) => {
-    const list = await List.query().findById(req.params.id)
 
-    if (list) {
-      await list.$relatedQuery('products').delete()
-      await list.$query().delete()
-    }
+    await ListProduct.query().delete().where('list_id', req.params.id)
 
-    res.status(204).end()
+    List.query().deleteById(req.params.id)
+                .then(() => res.status(204).end())
+                .catch(e => res.send(e))
 })
 
 
