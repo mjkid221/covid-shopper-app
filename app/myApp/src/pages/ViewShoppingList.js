@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
+
 import {
     IonContent,
     IonHeader,
@@ -27,14 +29,16 @@ import {
     IonInput,
     IonButton,
     IonModal,
-    IonSearchbar
+    IonSearchbar,
+    IonActionSheet
 } from '@ionic/react';
-import { add, create, barChart } from 'ionicons/icons';
+import { add, create, barChart, trash } from 'ionicons/icons';
 import {updateProductAmount, deleteProduct} from '../api/product'
 import ListItem from '../components/ListItem'
 import { fetchList } from '../api/list'
 import { getRecommended } from '../api/store'
 import SearchModal from '../components/SearchModal'
+import { updateList, deleteList } from '../api/list'
 
 const ViewShoppingList = ({match}) => {
 
@@ -48,6 +52,8 @@ const ViewShoppingList = ({match}) => {
 
     const [showRecommend, setShowRecommend] = useState(false)
     const [recommended, setRecommended] = useState([])
+    const [deleted, setDeleted] = useState(false)
+
 
     useEffect(() => {
         fetchList(match.params.id,(res) => {
@@ -73,6 +79,14 @@ const ViewShoppingList = ({match}) => {
         setTrigger(!trigger)
     }
 
+    const updateListName = () => {
+        updateList(lid, name)
+    }
+
+    if (deleted) {
+        return <Redirect to="/lists" />
+    }
+
     return (
         <IonPage>
             <IonHeader>
@@ -82,7 +96,8 @@ const ViewShoppingList = ({match}) => {
                         readOnly={editName}
                         onClick={() => setEditName(!editName)}
                         onIonChange={(e) => setName(e.target.value)}
-                        onIonBlur={() => console.log("blur")}
+                        onIonBlur={() => updateListName()}
+                        onIon
                     ></IonInput>
                     <IonButtons slot='start'>
                         <IonBackButton color='primary' defaultHref='/lists'/>
@@ -113,7 +128,7 @@ const ViewShoppingList = ({match}) => {
                             )
                         })}
                     </IonContent>
-                    <IonButton onClick={() => setShowModal(false)}>Back</IonButton>
+                    <IonButton onClick={() => setShowRecommend(false)}>Back</IonButton>
                 </IonModal>
                 <SearchModal showModal={showModal} setShowModal={setShowModal} lid={lid}/>
                 <IonFab vertical="bottom" horizontal="start" slot="fixed">
@@ -124,6 +139,12 @@ const ViewShoppingList = ({match}) => {
                         </IonFabButton>
                         <IonFabButton onClick={() => setShowRecommend(true)}>
                           <IonIcon icon={barChart} />
+                        </IonFabButton>
+                        <IonFabButton onClick={() => {
+                                deleteList(lid)
+                                setDeleted(true)
+                            }}>
+                          <IonIcon icon={trash} />
                         </IonFabButton>
                       </IonFabList>
                 </IonFab>
