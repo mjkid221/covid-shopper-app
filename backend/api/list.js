@@ -57,18 +57,10 @@ router.delete('/:id/product/:pid', (req, res) => {
 })
 
 // Delete list
-router.delete('/:id', async (req, res) => {
-
-    const list = await List.query()
-                      .findById(req.params.id)
-                      .debug(true);
-
-    if (list) {
-      await list.$relatedQuery('products').delete()
-      await list.$query().delete()
-    }
-
-    res.status(204).end()
+router.delete('/:id', (req, res) => {
+    List.query().deleteById(req.params.id)
+                .then(() => res.status(204).end())
+                .catch(e => res.send(e))
 })
 
 
