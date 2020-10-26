@@ -22,6 +22,8 @@ import Coles from "../assets/coles.jpg";
 import Woolworths from "../assets/woolworths.jpg";
 import IGA from "../assets/iga.png";
 import Kmart from "../assets/kmart.webp";
+import FreshnSave from "../assets/freshnsave.png";
+import Aldi from "../assets/aldi.jpg";
 import ViewStore from '../pages/ViewStore';
 
 
@@ -35,7 +37,7 @@ const Home = () => {
           <IonTitle>COVID Shopper</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent>
       <IonButton onClick={() => setShowAlert2(true)} expand="block">Alert: COVID Update</IonButton>
       <IonAlert
           isOpen={showAlert1}
@@ -66,7 +68,7 @@ const Home = () => {
           header={'Current COVID Cases'}
           subHeader={'QLD: 0, NSW: 1, VIC: 2, WA: 5, NT: 0, TAS: 0, ACT: 0'}
           message={'Continue to follow local guidelines and stay safe'}
-          buttons={[Ok]}/>
+          buttons={["Ok"]}/>
 
       <IonCard>
         <IonImg src="https://cdn.pixabay.com/photo/2020/03/27/17/03/shopping-4974313__480.jpg" class="img" />
@@ -113,6 +115,22 @@ const Home = () => {
           <IonItem>
             <IonImg src={IGA} class="StoreIcon" slot="start" />
             <IonLabel>IGA</IonLabel>
+            <IonButton fill="outline" slot="end" onClick={() => setShowAlert1(true)} expand="block"
+            >Open Store</IonButton>
+          </IonItem>
+      </IonCard>
+      <IonCard >
+          <IonItem>
+            <IonImg src={Aldi} class="StoreIcon" slot="start" />
+            <IonLabel>Aldi</IonLabel>
+            <IonButton fill="outline" slot="end" onClick={() => setShowAlert1(true)} expand="block"
+            >Open Store</IonButton>
+          </IonItem>
+      </IonCard>
+      <IonCard >
+          <IonItem>
+            <IonImg src={FreshnSave} class="StoreIcon" slot="start" />
+            <IonLabel>Fresh and Save</IonLabel>
             <IonButton fill="outline" slot="end" onClick={() => setShowAlert1(true)} expand="block"
             >Open Store</IonButton>
           </IonItem>
