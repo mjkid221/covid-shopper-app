@@ -14,13 +14,19 @@ import {
   IonButton,
   IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonImg, IonAlert
 } from '@ionic/react';
+import '../app.css';
 import { pin, wifi, wine, warning, walk } from 'ionicons/icons';
 import { BrowserPluginWeb } from '@capacitor/core';
+import BigW from "../assets/bigw.jpg";
+import Coles from "../assets/coles.jpg";
+import Woolworths from "../assets/woolworths.jpg";
+import IGA from "../assets/iga.png";
+import Kmart from "../assets/kmart.webp";
 
 
 const Home = () => {
   const [showAlert1, setShowAlert1] = useState(false);
-  const [myCustomIcon] = "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/27/d3/df/27d3df28-6d3a-ed40-13d0-6c0ed276a285/source/256x256bb.jpg"
+  const myCustomIcon = "../assets/bigw.jpg";
   return (
     <IonPage>
       <IonHeader>
@@ -40,7 +46,7 @@ const Home = () => {
           buttons={['OK']}
         />
       <IonCard>
-        <IonImg src="https://cdn.pixabay.com/photo/2020/03/27/17/03/shopping-4974313__480.jpg" />
+        <IonImg src="https://cdn.pixabay.com/photo/2020/03/27/17/03/shopping-4974313__480.jpg" class="img" />
           <IonItem>
           <IonCardHeader>
           <IonCardSubtitle>Tips for Shopping Safely</IonCardSubtitle>
@@ -50,35 +56,35 @@ const Home = () => {
       </IonCard>  
       <IonCard>
           <IonItem>
-            <IonIcon icon={myCustomIcon} slot="start" />
+            <IonImg src ={Woolworths} class="StoreIcon" slot="start" />
             <IonLabel>Woolworths</IonLabel>
             <IonButton fill="outline" slot="end">Open Store</IonButton>
           </IonItem>
       </IonCard>
       <IonCard>
           <IonItem>
-            <IonIcon icon={pin} slot="start" />
+            <IonImg src={Coles} class="StoreIcon" slot="start" />
             <IonLabel>Coles</IonLabel>
             <IonButton fill="outline" slot="end">Open Store</IonButton>
           </IonItem>
       </IonCard>
       <IonCard>
           <IonItem>
-            <IonIcon icon={pin} slot="start" />
+            <IonImg src={Kmart} class="StoreIcon" slot="start" />
             <IonLabel>Kmart</IonLabel>
             <IonButton fill="outline" slot="end">Open Store</IonButton>
           </IonItem>
       </IonCard>
       <IonCard>
           <IonItem>
-            <IonIcon icon={pin} slot="start" />
+            <IonImg src={BigW} class="StoreIcon" slot="start" />
             <IonLabel>Big W</IonLabel>
             <IonButton fill="outline" slot="end">Open Store</IonButton>
           </IonItem>
       </IonCard>
-      <IonCard>
+      <IonCard >
           <IonItem>
-            <IonIcon icon={pin} slot="start" />
+            <IonImg src={IGA} class="StoreIcon" slot="start" />
             <IonLabel>IGA</IonLabel>
             <IonButton fill="outline" slot="end">Open Store</IonButton>
           </IonItem>

@@ -1,0 +1,17 @@
+.StoreIcon{
+    width:24px;
+    height:24px;
+}
+
+.StoreIconBottom{
+    padding-bottom: 100px;
+    width:24px;
+    height:24px;
+}
+
+.img {
+    width:100%;
+    max-width:500px;
+    margin-left:auto;
+    margin-right:auto;
+}
