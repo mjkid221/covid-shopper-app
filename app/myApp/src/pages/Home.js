@@ -27,7 +27,7 @@ import ViewStore from '../pages/ViewStore';
 
 const Home = () => {
   const [showAlert1, setShowAlert1] = useState(false);
-  
+  const [showAlert2, setShowAlert2] = useState(false);
   return (
     <IonPage>
       <IonHeader>
