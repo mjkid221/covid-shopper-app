@@ -18,13 +18,23 @@ import {
     IonItemSliding,
     IonItemOptions,
     IonItemOption,
-    IonItemDivider
+    IonItemDivider,
+    IonFabButton,
+    IonFab,
+    IonFabList,
+    IonModal,
+    IonButton,
+    IonIcon,
+    IonInput
 } from '@ionic/react';
+import { add } from 'ionicons/icons';
+import { newList } from '../api/list'
 
 const MyShoppingLists = () => {
 
     const [name, setName] = useState("")
     const [lists, setLists] = useState({products: [], list_name: ""})
+    const [reloadLists, setReloadLists] = useState(false)
 
     useEffect(() => {
         fetch('https://dreamteam.uqcloud.net/api/customer/v2/5000', {
@@ -37,7 +47,7 @@ const MyShoppingLists = () => {
               console.log(e)
               setName("Unable to retrieve store namess")
           })
-    }, [])
+    }, [reloadLists])
 
     return (
         <IonPage>
@@ -64,6 +74,15 @@ const MyShoppingLists = () => {
                         )
                     })}
                 </IonList>
+
+                <IonFab vertical="bottom" horizontal="start" slot="fixed">
+                    <IonFabButton onClick={() => {
+                            newList()
+                            setReloadLists(!reloadLists)
+                        }}>
+                        <IonIcon icon={add} />
+                    </IonFabButton>
+                </IonFab>
 
 
             </IonContent>
