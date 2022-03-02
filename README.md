@@ -1,5 +1,7 @@
 # Covid-Safe Shopping App (2020)
-This app aims to help stores regulate social distancing behaviours on top of being able to keep track of “crowdedness” in stores which in turn helps trace/track covid cases. Customers can also look up desired categories of items and products to get the most out of their time, with the help of a robust store recommendation feature which is calculated based on the number of local covid cases and items in stock.  
+This app aims to help stores regulate social distancing behaviours by tracking “crowdedness” in stores with QR code. Has a store recommendation feature based on local cases. 
+
+Customers can look up desired categories of items and products to get the most out of their time, with the help of a robust store recommendation feature mentioned above which is calculated based on the number of local covid cases and items in stock.  
 
 ### The application was built using Ionic React. See preview below:
 
