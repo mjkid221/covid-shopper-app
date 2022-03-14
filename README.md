@@ -13,6 +13,6 @@ The application was built using React Native with JavaScript and TypeScript.
   <img height="600" src="https://user-images.githubusercontent.com/50122869/152752048-05c9fcca-8540-4d06-9de4-9b08ac2062bd.jpg">
 </p>
 
-`Watch project portfolio: https://youtu.be/PA8zcUE2_1c`
+`Watch project portfolio:` https://youtu.be/PA8zcUE2_1c
 
-`Watch individual portfolio:  https://youtu.be/-Q7iKiCofco`
+`Watch individual portfolio:` https://youtu.be/-Q7iKiCofco
