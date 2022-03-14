@@ -8,9 +8,9 @@ The application was built using React Native with JavaScript and TypeScript.
 ## Preview
 
 <p align="center">
-  <img width="300" src="https://user-images.githubusercontent.com/50122869/152749595-8e211ec1-5598-4768-8bc2-474b53790dd2.jpg">
-  <img width="300" src="https://user-images.githubusercontent.com/50122869/152749608-9a515253-cbe3-48d4-95c0-901735591d3d.jpg">
-  <img width="300" src="https://user-images.githubusercontent.com/50122869/152752048-05c9fcca-8540-4d06-9de4-9b08ac2062bd.jpg">
+  <img width="200" src="https://user-images.githubusercontent.com/50122869/152749595-8e211ec1-5598-4768-8bc2-474b53790dd2.jpg">
+  <img width="200" src="https://user-images.githubusercontent.com/50122869/152749608-9a515253-cbe3-48d4-95c0-901735591d3d.jpg">
+  <img width="200" src="https://user-images.githubusercontent.com/50122869/152752048-05c9fcca-8540-4d06-9de4-9b08ac2062bd.jpg">
 </p>
 
 `Watch project portfolio:` https://youtu.be/PA8zcUE2_1c
